@@ -11,6 +11,6 @@ xdescribe('AuthService', () => {
 
   it('should ...', inject([AuthService], (service: AuthService) => {
     expect(service).toBeTruthy();
-    console.log()
+    console.log('wefwfwef')
   }));
 });
