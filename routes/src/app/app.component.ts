@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'AngularMasterBook';
 
   constructor(private router: Router){
-
+    console.log('werwrwer')
   }
 }
