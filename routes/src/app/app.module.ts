@@ -8,14 +8,20 @@ import { AboutComponent } from './about/about/about.component';
 import { ContactComponent } from './contact/contact/contact.component';
 import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './login/login/login.component';
-import { ProductsComponent } from './products/products/products.component';
+import { ProductsComponent } from './products/products.component';
 import { ProtectedComponent } from './protected/protected/protected.component';
 import { LoggedInGuard } from './logged-in.guard';
 
 import {
   routes as childRoutes,
   ProductsModule
-} from './products/products/products.module';
+} from './products/products.module';
+import { MainComponent } from './products/main/main.component';
+import { MoreInfoComponent } from './products/more-info/more-info.component';
+import { ProductComponent } from './products/product/product.component';
+import { FormsModule } from '@angular/forms';
+import { APP_BASE_HREF } from '@angular/common';
+import { AUTH_PROVIDERS } from './auth.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -39,18 +45,23 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
-    ContactComponent,
     HomeComponent,
+    ContactComponent,
+    AboutComponent,
     LoginComponent,
-    ProductsComponent,
     ProtectedComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    ProductsModule
   ],
-  providers: [],
+  providers: [
+    AUTH_PROVIDERS,
+    LoggedInGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
